@@ -1,0 +1,171 @@
+/**
+  * 定义盒模型内边距
+  * 使用方式 全部内边距 X轴内边距 Y轴内边距  分别定义top left bottom right 内边距
+  * default size [xs, sm, default, md, lg]
+  */
+@mixin gen_padding($spaces) {
+  @each $key, $val in $spaces {
+    .p_#{$key} {
+      padding: $val;
+    }
+
+    .p-lr_#{$key} {
+      padding-left: $val;
+      padding-right: $val;
+    }
+
+    .p-tb_#{$key} {
+      padding-top: $val;
+      padding-bottom: $val;
+    }
+
+    .pl_#{$key} {
+      padding-left: $val;
+    }
+
+    .pr_#{$key} {
+      padding-right: $val;
+    }
+
+    .pt_#{$key} {
+      padding-top: $val;
+    }
+
+    .pb_#{$key} {
+      padding-bottom: $val;
+    }
+  }
+
+
+  .p_unset {
+    padding: unset !important;
+  }
+
+  .p-lr_unset {
+    padding-left: unset !important;
+    padding-right: unset !important;
+  }
+
+  .p-tb_unset {
+    padding-top: unset !important;
+    padding-bottom: unset !important;
+  }
+
+  .pl_unset {
+    padding-left: unset !important;
+  }
+
+  .pr_unset {
+    padding-right: unset !important;
+  }
+
+  .pt_unset {
+    padding-top: unset !important;
+  }
+
+  .pb_unset {
+    padding-bottom: unset !important;
+  }
+}
+
+/**
+  * 定义盒模型外边距
+  * 使用方式 全部外边距 X轴外边距 Y轴外边距  分别定义top left bottom right 外边距
+  * default size [xs, sm, default, md, lg]
+  */
+@mixin gen_margin($spaces) {
+  @each $key, $val in $spaces {
+    .m_#{$key} {
+      margin: $val;
+    }
+
+    .m-lr_#{$key} {
+      margin-left: $val;
+      margin-right: $val;
+    }
+
+    .m-tb_#{$key} {
+      margin-top: $val;
+      margin-bottom: $val;
+    }
+
+    .ml_#{$key} {
+      margin-left: $val;
+    }
+
+    .mr_#{$key} {
+      margin-right: $val;
+    }
+
+    .mt_#{$key} {
+      margin-top: $val;
+    }
+
+    .mb_#{$key} {
+      margin-bottom: $val;
+    }
+  }
+
+  .m_unset {
+    margin: unset !important;
+  }
+
+  .m-lr_unset {
+    margin-left: unset !important;
+    margin-right: unset !important;
+  }
+
+  .m-tb_unset {
+    margin-top: unset !important;
+    margin-bottom: unset !important;
+  }
+
+  .ml_unset {
+    margin-left: unset !important;
+  }
+
+  .mr_unset {
+    margin-right: unset !important;
+  }
+
+  .mt_unset {
+    margin-top: unset !important;
+  }
+
+  .mb_unset {
+    margin-bottom: unset !important;
+  }
+}
+
+/**
+  * 定义盒模型边框颜色
+  * default level [lighter, light, default, dark, darker]
+  */
+@mixin gen_border($map) {
+  @each $key, $val in $map {
+    .border_#{$key} {
+      border: solid 1px #{$val};
+    }
+  }
+
+  .border_unset {
+    border: unset !important;
+  }
+}
+
+/**
+  * 定义盒模型圆角
+  * default size [xs, sm, default, md, ld]
+  */
+@mixin gen_radius($radius) {
+  @each $key, $val in $radius {
+    .radius_#{$key} {
+      border-radius: $val;
+    }
+  }
+
+  .radius_unset {
+    border-radius: unset !important;
+  }
+}
+

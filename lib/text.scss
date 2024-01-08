@@ -1,0 +1,27 @@
+
+
+/**
+  * 定义标题文字大小
+  * default size [1 - 6]
+  * default step 2px
+  */
+@mixin gen_heading($max-size: 24px, $line-height: 1.6) {
+  @for $i from 1 through 6 {
+    .h#{$i}, h#{$i} {
+      font-size  : $max-size - (($i - 1) * 2px);
+      line-height: $line-height
+    }
+  }
+}
+
+
+/**
+  * 定义文字主题色
+  */
+@mixin gen_color($map) {
+  @each $key, $val in $map {
+    .color_#{$key} {
+      color: $val;
+    }
+  }
+}

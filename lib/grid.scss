@@ -1,0 +1,46 @@
+/**
+  * 定义gird布局样式
+  * columns 12
+  * spaces [xs, sm, default, md, lg]
+  *
+  */
+@mixin gen_grid($columns: 12, $spaceMap) {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    .grid-item {
+      width: 100%;
+    }
+
+    @for $i from 2 through $columns {
+      &.column_#{$i} {
+        $width: calc(100% / #{$i});
+        .grid-item {
+          width: $width;
+        }
+
+        $subColumns: $i;
+        @if $subColumns >= 2 {
+          @for $si from 1 through $subColumns {
+            .grid-item.column_#{$si} {
+              width: calc($width * #{$si});
+            }
+          }
+        }
+      }
+    }
+
+    @each $key, $val in $spaceMap {
+      &.gap_#{$key} {
+        padding: calc($val/2);
+        &.gap_clear {
+          margin: -$val;
+        }
+        .grid-item {
+          padding: calc($val/2);
+        }
+      }
+    }
+  }
+}
+

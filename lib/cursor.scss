@@ -1,0 +1,9 @@
+// cursors
+@mixin gen_cursor() {
+  $cursors: crosshair pointer move text wait help e-resize ne-resize nw-resize n-resize se-resize sw-resize s-resize w-resize;
+  @each $val in $cursors {
+    .#{$val} {
+      cursor: $val;
+    }
+  }
+}

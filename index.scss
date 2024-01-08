@@ -1,0 +1,31 @@
+@use "lib/bootstrap" as * ;
+@import "lib/variables";
+
+// generate flex style
+@include gen_direction();
+@include gen_wrap();
+@include gen_justify();
+@include gen_align_items();
+@include gen_align_content();
+@include gen_order();
+@include gen_align_self();
+@include gen_flex($flex-column);
+
+// generate box model style
+@include gen_padding($spaces);
+@include gen_margin($spaces);
+@include gen_border($border-colors);
+@include gen_radius($radii);
+
+// generate grid style
+@include gen_grid($grid-column, $spaces);
+
+// generate text style
+@include gen_heading($heading-max-size, $line-height);
+@include gen_color($text-colors);
+
+// generate mouse cursor style
+@include gen_cursor();
+
+// generate section style
+@include gen_section($spaces);

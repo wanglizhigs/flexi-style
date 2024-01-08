@@ -1,0 +1,191 @@
+/**
+  * 定义flex item在主轴的排列方向。
+  * row 主轴为水平方向，起点在左端
+  * row-reverse 主轴为水平方向，起点在右端
+  * column 主轴为垂直方向，起点在上端
+  * column-reverse 主轴为垂直方向，起点在下端
+  */
+@mixin gen_direction() {
+  $list: row row-reverse column column-reverse;
+  @each $val in $list {
+    .direction_#{$val} {
+      display: flex;
+      flex-direction: #{$val};
+    }
+  }
+}
+
+/**
+  * 定义flex item在一行中是否换行。
+  * nowrap 不换行
+  * wrap 换行，第一行在上方
+  * wrap-reverse 换行，第一行在下方
+  */
+@mixin gen_wrap() {
+  $list: nowrap wrap wrap-reverse;
+  @each $val in $list {
+    .#{$val} {
+      display: flex;
+      flex-wrap: #{$val};
+    }
+  }
+}
+
+/** 定义flex item在主轴上的对齐方式。
+  * start 左对齐
+  * end 右对齐
+  * center 居中
+  * between 两端对齐 item之间的间距相等
+  * around 每个item两侧间隔相等。
+  */
+@mixin gen_justify() {
+  $map: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+  );
+  @each $key, $val in $map {
+    .justify_#{$key} {
+      display: flex;
+      justify-content: #{$val};
+    }
+  }
+}
+
+/**
+  * 定义flex item在垂直轴上对齐方式。
+  * start 交叉轴的起点对齐
+  * end 交叉轴的终点对齐
+  * center 交叉轴的中点对齐
+  * baseline 项目的第一行文字的基线对齐
+  * stretch 如果项目未设置高度或设为auto，将占满整个容器的高度
+  */
+@mixin gen_align_items() {
+  $map: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    baseline: baseline,
+    stretch: stretch,
+  );
+  @each $key, $val in $map {
+    .align-items_#{$key} {
+      display: flex;
+      align-items: #{$val};
+    }
+  }
+}
+
+/**
+  * 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+  * start 与交叉轴的起点对齐。
+  * end 与交叉轴的终点对齐。
+  * center 与交叉轴的中点对齐。
+  * between 与交叉轴两端对齐，轴线之间的间隔平均分布。
+  * around 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+  * stretch 轴线占满整个交叉轴。
+  */
+@mixin gen_align_content() {
+  $map: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between,
+    around: space-around,
+    stretch: stretch,
+  );
+  @each $key, $val in $map {
+    .align-content_#{$key} {
+      display: flex;
+      align-content: #{$val};
+    }
+  }
+}
+
+/**
+  * 定义flex item的排列顺序。数值越小，排列越靠前，默认为0。
+  * default ranges [1 ~ 6]
+  * order_first = order_1
+  * order_last = order_6
+  */
+@mixin gen_order($level: 6) {
+  @for $i from 0 through $level {
+    @if $i == 0 {
+      .order_first {
+        order: #{$i};
+      }
+    }
+    @if $i == $level {
+      .order_last {
+        order: #{$i};
+      }
+    }
+    .order_#{$i} {
+      order: #{$i};
+    }
+  }
+}
+
+/**
+  * 定义单个项目有与其他项目不一样的对齐方式，可覆盖align-
+  * auto 继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+  * start 交叉轴的起点对齐
+  * end 交叉轴的终点对齐
+  * center 交叉轴的中点对齐
+  * baseline 项目的第一行文字的基线对齐
+  * stretch 如果项目未设置高度或设为auto，将占满整个容器的高度
+  */
+@mixin gen_align_self() {
+  $map: (
+    auto: auto,
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    baseline: baseline,
+    stretch: stretch,
+  );
+  @each $key, $val in $map {
+    .align-self-#{$key} {
+      align-self: #{$val};
+    }
+  }
+}
+
+/**
+  * 定义flex item在一行中所占比例
+  * default ranges [1 ~ 12]
+  */
+@mixin gen_flex($level: 24) {
+  @for $i from 1 through $level {
+    @if $i == 1 {
+      .flex {
+        position: relative;
+        flex: #{$i};
+      }
+    }
+    .flex_#{$i} {
+      position: relative;
+      flex: #{$i};
+    }
+  }
+}
+
+/*
+  *
+  *
+  */
+// @mixin flex_pitch($spaces) {
+//   @each $key, $val in $spaces {
+//     .flex-pitch_#{$key} {
+//       display: flex;
+//       margin-left: -$val;
+//       margin-right: -$val;
+//       .column {
+//         padding-left: $val;
+//         padding-right: $val;
+//       }
+//     }
+//   }
+// }

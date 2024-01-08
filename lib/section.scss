@@ -1,0 +1,26 @@
+
+/**
+  * 定义段落之间间距
+  * default size [xs, sm, default, md, lg]、
+  * pitch_size 作用在row 定义单行的间距
+  * pitch_size 作用在section 定义所有行间距
+  * last-pitch_clear 清除最后一行间距
+  */
+@mixin gen_section($spaces) {
+  .section {
+    .last-pitch_unset {
+      .row:last-child {
+        margin-bottom: unset !important;
+      }
+    }
+
+    @each $key, $val in $spaces {
+      .row.pitch_#{$key} {
+        margin-bottom: $val;
+      }
+      &.pitch_#{$key} .row {
+        margin-bottom: $val;
+      }
+    }
+  }
+}
