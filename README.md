@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-npm install nuclear-style -S
+npm install flexi-style -S
 ```
 
 ## Quick Start
@@ -13,15 +13,15 @@ npm install nuclear-style -S
 导入 css 样式
 
 ```
-import 'nuclear-style/dist/index.css';
+import 'flexi-style/dist/index.css';
 // or
-import 'nuclear-style/dist/index.min.css';
+import 'flexi-style/dist/index.min.css';
 ```
 
 导入 scss 样式
 
 ```
-import 'nuclear-style/index.scss';
+import 'flexi-style/index.scss';
 ```
 
 覆盖默认变量
@@ -40,7 +40,7 @@ $themeColorMap: (
 ) !default;
 
 
-import 'nuclear-style/index.scss';
+import 'flexi-style/index.scss';
 import './variables.scss'
 ```
 
